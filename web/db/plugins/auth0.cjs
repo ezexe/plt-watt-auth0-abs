@@ -12,7 +12,7 @@ module.exports = async function (fastify, opts) {
       const dbUser = (await fastify.platformatic.entities.user.find({
         skipAuth: true,
         where: {
-          provider: { eq: opts.auth0.provider },
+          provider: { eq: "auth0" },
           providerId: { eq: user.sub },
         },
       }))[0];
