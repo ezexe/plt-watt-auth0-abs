@@ -35,7 +35,7 @@ module.exports = async function (fastify, opts) {
   });
 
   fastify.addHook("preHandler", async (req, reply) => {
-    if (req.url.startsWith("/user")) {
+    if (req.url.startsWith("/user") || req.url.startsWith("/activate")) {
       await req.setupDBAuthorizationUser();
     }
   });
