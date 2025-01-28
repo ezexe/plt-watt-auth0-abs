@@ -1,0 +1,19 @@
+{
+  "name": "plt-watt-auth0-abs",
+  "private": true,
+  "scripts": {
+    "dev": "wattpm dev",
+    "build": "wattpm build",
+    "start": "wattpm start"
+  },
+  "dependencies": {
+    "@platformatic/db": "^2.40.0",
+    "@platformatic/runtime": "^2.40.0",
+    "fastify-auth0-verify": "^3.0.0",
+    "wattpm": "^2.40.0"
+  },
+  "workspaces": [
+    "web/*",
+    "external/*"
+  ]
+}

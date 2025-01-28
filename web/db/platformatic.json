@@ -1,0 +1,67 @@
+{
+  "$schema": "https://schemas.platformatic.dev/@platformatic/db/2.40.0.json",
+  "db": {
+    "connectionString": "{PLT_DB_DATABASE_URL}",
+    "graphql": true,
+    "openapi": true,
+    "schemalock": true
+  },
+  "watch": {
+    "ignore": ["*.sqlite", "*.sqlite-journal"]
+  },
+  "migrations": {
+    "dir": "migrations",
+    "autoApply": "{PLT_DB_APPLY_MIGRATIONS}"
+  },
+  "plugins": {
+    "paths": [
+      {
+        "path": "./plugins",
+        "encapsulate": false,
+        "options": {
+          "auth0": {
+            "domain": "{AUTH0_DOMAIN}",
+            "audience": "{AUTH0_API_AUDIENCE}"
+          }
+        }
+      },
+      {
+        "path": "./routes"
+      }
+    ],
+    "typescript": "{PLT_DB_TYPESCRIPT}"
+  },
+  "types": {
+    "autogenerate": true
+  },
+  "authorization": {
+    "rolePath": "roles",
+    "rules": [
+      {
+        "role": "user",
+        "entities": ["user"],
+        "find": {
+          "checks": {
+            "tenantId": {
+              "eq": "tenantId"
+            }
+          }
+        },
+        "save": {
+          "checks": {
+            "tenantId": {
+              "eq": "tenantId"
+            }
+          }
+        },
+        "delete": {
+          "checks": {
+            "userId": {
+              "eq": "userId"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
