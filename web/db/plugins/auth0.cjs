@@ -19,6 +19,8 @@ module.exports = async function (fastify, opts) {
       return {
         ...user,
         ...dbUser,
+        auth0: user,
+        db: dbUser,
         roles: ["user"],
       };
     },
