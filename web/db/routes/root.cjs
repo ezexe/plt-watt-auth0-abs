@@ -7,6 +7,7 @@ module.exports = async function (fastify, _) {
   });
 
   fastify.post("/activate", async (req, _) => {
+    req.user.identity = identity;
     return (
       req.user.db ||
       (await fastify.platformatic.entities.user.save({
