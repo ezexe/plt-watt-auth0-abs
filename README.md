@@ -27,7 +27,7 @@ As a neat little bonus feature, I'm planning to:
 
 1. Clone this bad boy:
 ```bash
-git clone https://github.com/your-username/plt-watt-auth0-abs.git
+git clone https://github.com/your-username/plt-watt-auth0-abs.git](https://github.com/ezexe/plt-watt-auth0-abs.git
 cd plt-watt-auth0-abs
 ```
 
