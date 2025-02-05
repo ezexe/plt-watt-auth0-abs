@@ -7,8 +7,9 @@ module.exports = async function (fastify, opts) {
   });
 
   fastify.post("/activate", async (req, res) => {
-    try {
-      return req.user.db || await fastify.platformatic.entities.user.save({
+    return (
+      req.user.db ||
+      (await fastify.platformatic.entities.user.save({
         input: {
           email: req.user.identity.email,
           provider: req.user.identity.provider,
@@ -16,11 +17,8 @@ module.exports = async function (fastify, opts) {
           tenantId: randomUUID(),
           userId: randomUUID(),
         },
-        skipAuth: true,
-        ctx: req.ctx,
-      });
-    } catch (error) {
-      return res.code(500).send({ error });
-    }
+        ctx: req.platformaticContext,
+      }))
+    );
   });
 };
