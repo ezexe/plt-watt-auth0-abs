@@ -1,5 +1,5 @@
-/// <reference path="../global.d.ts" />
 "use strict";
+const { randomUUID } = require("crypto");
 /** @param {import('fastify').FastifyInstance} fastify */
 module.exports = async function (fastify, opts) {
   fastify.get("/example", async (request, reply) => {
@@ -8,12 +8,11 @@ module.exports = async function (fastify, opts) {
 
   fastify.post("/activate", async (req, res) => {
     try {
-      const { randomUUID } = require("crypto");
       return req.user.db || await fastify.platformatic.entities.user.save({
         input: {
-          email: req.user.auth0.email,
-          provider: "auth0",
-          providerId: req.user.auth0.sub,
+          email: req.user.identity.email,
+          provider: req.user.identity.provider,
+          providerId: req.user.identity.providerId,
           tenantId: randomUUID(),
           userId: randomUUID(),
         },

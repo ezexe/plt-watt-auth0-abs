@@ -20,6 +20,7 @@
         "encapsulate": false,
         "options": {
           "auth0": {
+            "provider": "auth0",
             "domain": "{AUTH0_DOMAIN}",
             "audience": "{AUTH0_API_AUDIENCE}"
           }
