@@ -2,5 +2,5 @@
 'use strict'
 /** @param {import('fastify').FastifyInstance} fastify */
 module.exports = async function (fastify, opts) {
-  fastify.decorate('example', 'foo * bar * π÷0 ≥ ∞')
+  fastify.decorate('example', 'foo * bar * π÷0 * ∞')
 }
