@@ -6,7 +6,7 @@ module.exports = async function (fastify, opts) {
     return { greetings: fastify.example };
   });
 
-  fastify.post("/activate", async (req, res) => {
+  fastify.post("/activate", async (req, _) => {
     return (
       req.user.db ||
       (await fastify.platformatic.entities.user.save({
