@@ -1,7 +1,7 @@
 "use strict";
 const { randomUUID } = require("crypto");
 /** @param {import('fastify').FastifyInstance} fastify */
-module.exports = async function (fastify, opts) {
+module.exports = async function (fastify, _) {
   fastify.get("/example", async (request, reply) => {
     return { greetings: fastify.example };
   });
