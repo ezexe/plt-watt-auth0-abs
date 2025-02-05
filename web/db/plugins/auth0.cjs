@@ -46,7 +46,7 @@ module.exports = async function (fastify, opts) {
     },
   });
   //
-  fastify.addHook("onRequest", async function (req, res) {
+  fastify.addHook("onRequest", async function (req, _) {
     try {
       if (req.headers.authorization) {
         await req.setupDBAuthorizationUser();
